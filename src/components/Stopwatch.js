@@ -26,6 +26,16 @@ class Stopwatch extends Component {
 // - Push the current elaspedTime to state.laps []
 // - Loop through state. laps and print out what's in there as a list (state -> ui)
 
+convertTime(raw) {
+    //input something like 124, output 02:04
+    //How many minutes?
+    //How many seconds left over after calculating minutes?
+    let minutes = `0${Math.floor(raw/60)}`
+    let seconds = `0${raw % 60}`
+    return `${minutes.substr(-2)} : ${seconds.substr(-2)}`
+    
+}
+
 
 Start() {
     // alert('You Clicked Start')
@@ -67,7 +77,8 @@ Lap() {
             <div>
                 <h1>StopWatch</h1>
                 <div className="Stopwatch">
-                <div>{this.state.elaspedTime}</div>
+                <div>{this.convertTime(this.state.elaspedTime)}</div>
+                {/* <div>{this.state.elaspedTime}</div> */}
                 {/* {this.state.time} */}
                 </div>
                 <button onClick={()=>this.Start()}>Start</button>
@@ -77,7 +88,7 @@ Lap() {
                 <ul>
                     {
                         this.state.laps.map(lap => {
-                            return <li>{lap}</li>
+                            return <li>{this.convertTime(lap)}</li>
                         })
                     }
                 </ul>
