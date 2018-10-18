@@ -4,7 +4,7 @@ class Stopwatch extends Component {
     state = {
         elaspedTime: 0,
         interval: null,
-        laps: [3, 5, 7]
+        laps: []
 
     }
 
